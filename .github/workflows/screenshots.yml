@@ -33,7 +33,9 @@ jobs:
           name: Sanvidhi-Site-screenshots
           path: screenshots/
       - name: Publish to the screenshots branch
+        if: always()
         run: |
+          ls screenshots/*.png >/dev/null 2>&1 || { echo "no screenshots rendered"; exit 0; }
           mkdir -p /tmp/shots && cp screenshots/*.png /tmp/shots/
           cd /tmp/shots
           git init -q -b screenshots

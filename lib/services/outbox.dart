@@ -172,6 +172,13 @@ class Outbox extends ChangeNotifier {
 
   Future<void> discard(OutboxItem item) => _remove(item);
 
+  /// Test hook: empties the queue in memory only.
+  @visibleForTesting
+  void debugClear() {
+    _items.clear();
+    notifyListeners();
+  }
+
   /// Test hook: shows an item as waiting without touching disk or network.
   @visibleForTesting
   void debugAdd(OutboxItem item) {

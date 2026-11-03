@@ -31,6 +31,10 @@ class FakeErp implements HttpClientAdapter {
   @override
   Future<ResponseBody> fetch(RequestOptions o, Stream<Uint8List>? body, Future<void>? cancel) async {
     final key = o.path.split('mobile_api.').last.split('?').first;
+    if (key.startsWith('submit_')) {
+      // the phone is "offline": queued reports stay waiting
+      throw DioException(requestOptions: o, type: DioExceptionType.connectionError);
+    }
     if (!api.containsKey(key)) {
       return ResponseBody.fromString(jsonEncode({'exception': 'No fixture for $key'}), 404,
           headers: {Headers.contentTypeHeader: ['application/json']});
@@ -106,6 +110,7 @@ Future<void> shot(WidgetTester t, String name) async {
 Future<void> finish(WidgetTester t) async {
   await t.pumpWidget(const SizedBox());
   await t.pump(const Duration(minutes: 5)); // drain timers (http timeouts, debounce)
+  debugDisableShadows = true; // the test binding checks it is restored
 }
 
 void signIn() {
@@ -124,11 +129,13 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
-    debugDisableShadows = false;
     await loadFonts();
     api = Map<String, dynamic>.from(jsonDecode(File('test/fixtures/api.json').readAsStringSync()) as Map);
     ApiClient.instance.configure(baseUrl: 'https://erp.yourcompany.com', apiKey: 'k', apiSecret: 's');
     ApiClient.instance.dio.httpClientAdapter = FakeErp();
+    // decode on this isolate: the default transformer uses a background isolate for large
+    // responses, which never completes inside the fake-async test zone
+    ApiClient.instance.dio.transformer = SyncTransformer();
     LocationService.debugPosition = Position(
       latitude: 19.4123, longitude: 72.8311, timestamp: DateTime.now(), accuracy: 6, altitude: 12,
       altitudeAccuracy: 3, heading: 0, headingAccuracy: 0, speed: 0, speedAccuracy: 0);
@@ -138,6 +145,7 @@ void main() {
     final view = TestWidgetsFlutterBinding.instance.platformDispatcher.views.first;
     view.physicalSize = const Size(1080, 2340);
     view.devicePixelRatio = 2.625;
+    debugDisableShadows = false; // real shadows in the screenshots
   });
 
   testWidgets('01 login', (t) async {
@@ -156,6 +164,7 @@ void main() {
     signIn();
     await t.pumpWidget(app(const HomeShell()));
     await shot(t, '02_my_sites');
+    session.offline = true;
     Outbox.instance.debugAdd(OutboxItem(
       ref: 'demo-1', kind: OutboxKind.dailyReport, site: 'IN-DM0021', title: 'Excavation for tower foundation pits',
       created: DateTime.now().subtract(const Duration(minutes: 25)), payload: const {}));
@@ -163,7 +172,7 @@ void main() {
     await shot(t, '07_submissions_offline_queue');
     await t.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text('Me')));
     await shot(t, '08_me');
-    await Outbox.instance.discard(Outbox.instance.pending.first).catchError((_) {});
+    Outbox.instance.debugClear();
     await finish(t);
   });
 
