@@ -39,6 +39,12 @@ class ApiClient {
 
   String? get baseUrl => _baseUrl;
 
+  /// Headers for loading private files (photos) with the same login as the API.
+  Map<String, String> get authHeaders => {if (_authHeader != null) 'Authorization': _authHeader!};
+
+  /// Absolute URL for a server path such as /private/files/x.jpg.
+  String fileUrl(String path) => path.startsWith('http') ? path : '${_baseUrl ?? ''}$path';
+
   /// Test hook: lets the screenshot harness swap in a fake HTTP adapter.
   @visibleForTesting
   Dio get dio => _dio;

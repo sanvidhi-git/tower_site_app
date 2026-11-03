@@ -22,6 +22,7 @@ import 'package:sanvidhi_site/screens/home_shell.dart';
 import 'package:sanvidhi_site/screens/login_screen.dart';
 import 'package:sanvidhi_site/screens/receipt_screen.dart';
 import 'package:sanvidhi_site/screens/site_screen.dart';
+import 'package:sanvidhi_site/screens/submission_screen.dart';
 import 'package:sanvidhi_site/services/location.dart';
 import 'package:sanvidhi_site/services/outbox.dart';
 
@@ -30,7 +31,10 @@ late Map<String, dynamic> api;
 class FakeErp implements HttpClientAdapter {
   @override
   Future<ResponseBody> fetch(RequestOptions o, Stream<Uint8List>? body, Future<void>? cancel) async {
-    final key = o.path.split('mobile_api.').last.split('?').first;
+    var key = o.path.split('mobile_api.').last.split('?').first;
+    if (key == 'get_submission') {
+      key = o.queryParameters['doctype'] == 'Daily Site Report' ? 'get_submission_dsr' : 'get_submission_smr';
+    }
     if (key.startsWith('submit_')) {
       // the phone is "offline": queued reports stay waiting
       throw DioException(requestOptions: o, type: DioExceptionType.connectionError);
@@ -238,6 +242,51 @@ void main() {
     await t.enterText(find.widgetWithText(TextFormField, 'Serial nos (one per line)'), 'SMPS-77812');
     FocusManager.instance.primaryFocus?.unfocus();
     await shot(t, '06_receipt_indus_material');
+    await finish(t);
+  });
+  testWidgets('09 open a submission from the list', (t) async {
+    signIn();
+    await t.pumpWidget(app(const HomeShell()));
+    await settle(t);
+    await t.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text('Submissions')));
+    await settle(t);
+    final dsr = (api['get_submission_dsr'] as Map)['name'] as String;
+    await t.tap(find.textContaining(dsr).first);
+    await shot(t, '09_submission_daily_report');
+    await t.drag(find.byType(ListView).last, const Offset(0, -800));
+    await shot(t, '09b_submission_daily_report_more');
+    await finish(t);
+  });
+
+  testWidgets('10 material receipt detail', (t) async {
+    signIn();
+    final smr = api['get_submission_smr'] as Map;
+    await t.pumpWidget(app(SubmissionScreen(doctype: 'Site Material Receipt', name: smr['name'] as String)));
+    await shot(t, '10_submission_material_receipt');
+    await finish(t);
+  });
+
+  testWidgets('11 report still on the phone', (t) async {
+    signIn();
+    final item = OutboxItem(
+      ref: 'demo-2', kind: OutboxKind.dailyReport, site: siteId, title: 'Backfilling',
+      created: DateTime.now().subtract(const Duration(minutes: 40)),
+      payload: {
+        'tower_site': siteId, 'report_date': '2026-11-03', 'labour_count': 7, 'milestone_achieved': null,
+        'work_completed': 'Backfilling in layers with compaction around tower foundation',
+        'work_items': [
+          {'item_code': 'DM-25-BACKFILL', 'description': 'Backfilling in layers with compaction', 'uom': 'Cubic Meter', 'qty_completed': 12.5}
+        ],
+        'materials': [],
+        'expenses': [
+          {'expense_type': 'Labour Wages', 'amount': 4550, 'paid_to': 'Labour contractor'}
+        ],
+        'photos': [],
+        'pending_work': 'Earth resistance test',
+        'latitude': 19.2964, 'longitude': 73.0631,
+      });
+    await t.pumpWidget(app(SubmissionScreen.local(item: item)));
+    await shot(t, '11_submission_on_phone');
     await finish(t);
   });
 }

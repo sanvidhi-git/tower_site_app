@@ -6,6 +6,7 @@ import '../services/outbox.dart';
 import '../services/site_api.dart';
 import '../widgets/common.dart';
 import '../widgets/sync_banner.dart';
+import 'submission_screen.dart';
 
 class SubmissionsScreen extends StatefulWidget {
   const SubmissionsScreen({super.key});
@@ -52,6 +53,12 @@ class _SubmissionsScreenState extends State<SubmissionsScreen> {
                       maxLines: 2, overflow: TextOverflow.ellipsis),
                   isThreeLine: true,
                   trailing: StatusChip(r['status'].toString()),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SubmissionScreen(doctype: SiteApi.doctypeFor(r), name: r['name'].toString()),
+                    ),
+                  ),
                 );
               },
             ),
@@ -81,6 +88,7 @@ class _OutboxTile extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         isThreeLine: true,
+        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SubmissionScreen.local(item: item))),
         trailing: PopupMenuButton<String>(
           onSelected: (v) async {
             if (v == 'retry') {

@@ -6,6 +6,7 @@ import '../services/site_api.dart';
 import '../widgets/common.dart';
 import 'daily_report_screen.dart';
 import 'receipt_screen.dart';
+import 'submission_screen.dart';
 
 class SiteScreen extends StatefulWidget {
   const SiteScreen({super.key, required this.site});
@@ -120,6 +121,12 @@ class _SiteScreenState extends State<SiteScreen> {
                       title: Text('${r['kind']} · ${fmtDate(r['date'])}'),
                       subtitle: Text((r['summary'] ?? r['name']).toString(), maxLines: 1, overflow: TextOverflow.ellipsis),
                       trailing: StatusChip(r['status'].toString()),
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => SubmissionScreen(doctype: SiteApi.doctypeFor(r), name: r['name'].toString()),
+                        ),
+                      ),
                     ),
                 ]),
               ),

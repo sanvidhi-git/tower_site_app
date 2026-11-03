@@ -557,6 +557,17 @@
  },
  "my_submissions": [
   {
+   "name": "DSR-2026-00129",
+   "tower_site": "IN-DM0018",
+   "date": "2026-11-03",
+   "docstatus": 0,
+   "summary": "Earthing pits completed, GI strip laid and welded to EGB",
+   "modified": "2026-11-04 00:10:02.335240",
+   "kind": "Daily Report",
+   "doctype": "Daily Site Report",
+   "status": "Pending approval"
+  },
+  {
    "name": "SMR-2026-00101",
    "tower_site": "IN-DM0018",
    "date": "2026-11-03",
@@ -564,6 +575,7 @@
    "summary": "Indus Free-Issue Material",
    "modified": "2026-11-03 23:11:03.904527",
    "kind": "Material Receipt",
+   "doctype": "Site Material Receipt",
    "status": "Pending approval"
   },
   {
@@ -574,6 +586,7 @@
    "summary": "Earthing pits and GI strip laying done",
    "modified": "2026-11-03 23:11:03.878693",
    "kind": "Daily Report",
+   "doctype": "Daily Site Report",
    "status": "Pending approval"
   },
   {
@@ -584,6 +597,7 @@
    "summary": "OD BTS slab casting completed, curing started",
    "modified": "2026-11-03 23:11:03.838190",
    "kind": "Daily Report",
+   "doctype": "Daily Site Report",
    "status": "Pending approval"
   }
  ],
@@ -652,5 +666,114 @@
   "app": "tower_site_execution",
   "version": "0.1.0",
   "site": "erp.yourcompany.com"
+ },
+ "get_submission_dsr": {
+  "doctype": "Daily Site Report",
+  "name": "DSR-2026-00129",
+  "kind": "Daily Report",
+  "status": "Pending approval",
+  "docstatus": 0,
+  "tower_site": "IN-DM0018",
+  "nominal_name": "Bhiwandi_NB2_18",
+  "date": "2026-11-03",
+  "created_on": "2026-11-04 00:10:02.155200",
+  "created_by": "Santosh Jadhav",
+  "approved_by": null,
+  "approved_on": null,
+  "source": "Mobile App",
+  "latitude": 19.2964,
+  "longitude": 73.0631,
+  "remarks": "Earth resistance to be measured tomorrow",
+  "photos": [
+   {
+    "image": "test/fixtures/photo1.jpg",
+    "caption": "Earthing pit 1"
+   },
+   {
+    "image": "test/fixtures/photo2.jpg",
+    "caption": "GI strip to EGB"
+   }
+  ],
+  "postings": [],
+  "supervisor_name": "Santosh Jadhav",
+  "labour_count": 9,
+  "milestone_achieved": "C3",
+  "work_completed": "Earthing pits completed, GI strip laid and welded to EGB",
+  "pending_work": "Backfilling and earth resistance test",
+  "total_expense": 7450.0,
+  "work_items": [
+   {
+    "item_code": "DM-22-EARTH",
+    "description": "Earthing, GI strip 25x3 incl. laying and jointing",
+    "uom": "Meter",
+    "qty_completed": 20.0,
+    "remarks": null
+   }
+  ],
+  "materials": [
+   {
+    "item_code": "MAT-GI-STRIP-25X3",
+    "item_name": "GI Strip 25x3 mm",
+    "qty": 22.0,
+    "uom": "Meter",
+    "source_warehouse": null
+   }
+  ],
+  "expenses": [
+   {
+    "expense_type": "Labour Wages",
+    "amount": 5850.0,
+    "description": null,
+    "paid_to": "Ramesh (labour contractor)",
+    "bill": "test/fixtures/bill.jpg"
+   },
+   {
+    "expense_type": "Diesel / Fuel",
+    "amount": 1600.0,
+    "description": "JCB diesel",
+    "paid_to": null,
+    "bill": null
+   }
+  ]
+ },
+ "get_submission_smr": {
+  "doctype": "Site Material Receipt",
+  "name": "SMR-2026-00101",
+  "kind": "Material Receipt",
+  "status": "Pending approval",
+  "docstatus": 0,
+  "tower_site": "IN-DM0018",
+  "nominal_name": "Bhiwandi_NB2_18",
+  "date": "2026-11-03",
+  "created_on": "2026-11-03 23:11:03.904527",
+  "created_by": "Santosh Jadhav",
+  "approved_by": null,
+  "approved_on": null,
+  "source": "Mobile App",
+  "latitude": 0.0,
+  "longitude": 0.0,
+  "remarks": null,
+  "photos": [],
+  "postings": [],
+  "receipt_type": "Indus Free-Issue Material",
+  "purchase_order": null,
+  "supplier": null,
+  "source_warehouse": null,
+  "indus_warehouse": "MAW - Pune Warehouse",
+  "target_warehouse": "IN-DM0018 - STPL",
+  "challan_no": "INDUS/DC/55871",
+  "vehicle_no": null,
+  "received_by_name": "Santosh Jadhav",
+  "items": [
+   {
+    "item_code": null,
+    "item_name": "SMPS 12kW with MPPT",
+    "ordered_qty": 0.0,
+    "received_qty": 1.0,
+    "rejected_qty": 0.0,
+    "uom": "Nos",
+    "serial_nos": "SMPS-77812"
+   }
+  ]
  }
 }

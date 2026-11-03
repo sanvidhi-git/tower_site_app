@@ -33,6 +33,12 @@ class SiteApi {
 
   static Future<List<Map<String, dynamic>>> mySubmissions() async => _list(await _api.get('$_m.my_submissions'));
 
+  static Future<Map<String, dynamic>> submission(String doctype, String name) =>
+      _cached('sub_${_safe(name)}', () => _api.get('$_m.get_submission', {'doctype': doctype, 'name': name}));
+
+  static String doctypeFor(Map<String, dynamic> row) =>
+      (row['doctype'] as String?) ?? (row['kind'] == 'Daily Report' ? 'Daily Site Report' : 'Site Material Receipt');
+
   static Future<Map<String, dynamic>> submitDailyReport(Map<String, dynamic> payload) async =>
       Map<String, dynamic>.from(await _api.post('$_m.submit_daily_report', {'payload': payload}));
 

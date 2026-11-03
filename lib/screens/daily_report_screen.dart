@@ -112,10 +112,23 @@ class _DailyReportScreenState extends State<DailyReportScreen> {
       'latitude': _pos?.latitude,
       'longitude': _pos?.longitude,
       'work_items': [
-        for (final w in _works) {'item_code': w.boq['item_code'], 'qty_completed': w.qty}
+        for (final w in _works)
+          {
+            'item_code': w.boq['item_code'],
+            'description': w.boq['description'],
+            'uom': w.boq['uom'],
+            'qty_completed': w.qty,
+          }
       ],
       'materials': [
-        for (final m in _materials) {'item_code': m.item['item_code'], 'qty': m.qty, 'source_warehouse': m.warehouse}
+        for (final m in _materials)
+          {
+            'item_code': m.item['item_code'],
+            'item_name': m.item['item_name'],
+            'uom': m.item['uom'],
+            'qty': m.qty,
+            'source_warehouse': m.warehouse,
+          }
       ],
       'expenses': [
         for (final e in _expenses)
