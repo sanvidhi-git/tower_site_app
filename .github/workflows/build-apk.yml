@@ -1,0 +1,101 @@
+name: Build Android APK
+
+# Builds an installable release APK in the cloud on every push to main, or on demand
+# from the Actions tab ("Run workflow"). The APK is published as a GitHub Release and
+# kept as Sanvidhi-Site-latest.apk on the `builds` branch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      server_url:
+        description: "ERP address to build into the app, e.g. https://erp.yourcompany.com (blank = staff type it at login)"
+        required: false
+        default: ""
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Generate Android project files
+        run: bash tool/setup_android.sh ${{ vars.APP_ORG || 'com.sanvidhi' }}
+
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+
+      - name: Unit tests
+        run: flutter test
+
+      - name: Build release APK
+        env:
+          SERVER: ${{ inputs.server_url || vars.SITE_SERVER || '' }}
+        run: |
+          if [ -n "$SERVER" ]; then
+            flutter build apk --release --dart-define=SITE_SERVER="$SERVER"
+          else
+            flutter build apk --release
+          fi
+
+      - name: Sign with the permanent release key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          APK=build/app/outputs/flutter-apk/app-release.apk
+          OUT=build/Sanvidhi-Site-$(grep '^version:' pubspec.yaml | awk '{print $2}' | tr '+' '-').apk
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > release.jks
+            APKSIGNER=$(ls -d "$ANDROID_HOME"/build-tools/*/ | sort -V | tail -1)apksigner
+            "$APKSIGNER" sign --ks release.jks --ks-key-alias "$KEY_ALIAS" \
+              --ks-pass "pass:$KEYSTORE_PASSWORD" --key-pass "pass:$KEY_PASSWORD" --out "$OUT" "$APK"
+            "$APKSIGNER" verify --print-certs "$OUT" | head -3
+            rm -f release.jks
+          else
+            echo "::warning::No signing secrets set - APK is signed with a temporary debug key; updates will need an uninstall first."
+            cp "$APK" "$OUT"
+          fi
+          echo "APK_PATH=$OUT" >> "$GITHUB_ENV"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Sanvidhi-Site-APK
+          path: ${{ env.APK_PATH }}
+          retention-days: 30
+
+      - name: Publish as a GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="build-${{ github.run_number }}"
+          gh release create "$TAG" "$APK_PATH" --target "${{ github.sha }}" \
+            --title "Sanvidhi Site build ${{ github.run_number }}" \
+            --notes "Installable APK built from ${{ github.sha }}. Download it on the phone and open it to install."
+
+      - name: Keep the latest APK on the builds branch
+        run: |
+          mkdir -p /tmp/out && cp "$APK_PATH" /tmp/out/Sanvidhi-Site-latest.apk
+          cd /tmp/out
+          git init -q -b builds
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add Sanvidhi-Site-latest.apk
+          git commit -q -m "APK from run ${{ github.run_number }} (${{ github.sha }})"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" builds
