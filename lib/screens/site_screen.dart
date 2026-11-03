@@ -142,7 +142,7 @@ class _Header extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(gradient: Brand.gradient, borderRadius: BorderRadius.circular(16)),
-      child: DefaultTextStyle(
+      child: DefaultTextStyle.merge(
         style: const TextStyle(color: Colors.white),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text('${site['nominal_name'] ?? site['name']}',

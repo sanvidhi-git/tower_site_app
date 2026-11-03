@@ -317,7 +317,7 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
             ),
           ),
         QtyField(value: l.received, label: 'Received', suffix: l.uom, onChanged: (v) => l.received = v),
-        if (!indus) QtyField(value: l.rejected, label: 'Damaged / rejected', width: 150, onChanged: (v) => l.rejected = v),
+        if (!indus) QtyField(value: l.rejected, label: 'Damaged', width: 130, onChanged: (v) => l.rejected = v),
         if (indus)
           SizedBox(
             width: 90,
