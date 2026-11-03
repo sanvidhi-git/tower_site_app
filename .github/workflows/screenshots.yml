@@ -1,0 +1,42 @@
+name: App screenshots
+
+# Renders every main screen of the real app (data captured from a demo ERPNext site,
+# real fonts/theme) and publishes the PNGs to the `screenshots` branch.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["lib/**", "test/**", "assets/**", ".github/workflows/screenshots.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  shots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Render screens
+        env:
+          TZ: Asia/Kolkata
+        run: flutter test test/screenshots_test.dart
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Sanvidhi-Site-screenshots
+          path: screenshots/
+      - name: Publish to the screenshots branch
+        run: |
+          mkdir -p /tmp/shots && cp screenshots/*.png /tmp/shots/
+          cd /tmp/shots
+          git init -q -b screenshots
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add . && git commit -q -m "Screenshots from ${{ github.sha }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" screenshots

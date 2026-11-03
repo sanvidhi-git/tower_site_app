@@ -1,0 +1,656 @@
+{
+ "bootstrap": {
+  "user": "santosh@towerdemo.local",
+  "full_name": "Santosh Jadhav",
+  "employee": {
+   "name": "HR-EMP-00002",
+   "employee_name": "Santosh Jadhav"
+  },
+  "is_manager": false,
+  "company": "Sanvidhi Test Pvt Ltd",
+  "sites": [
+   {
+    "name": "IN-DM0030",
+    "nominal_name": "Vasai_NB2_30",
+    "status": "Work Not Started",
+    "overall_progress": 0.0,
+    "zone": "Vasai",
+    "district": "Palghar",
+    "latitude": 19.861592,
+    "longitude": 72.906112,
+    "allocation_date": "2026-10-21",
+    "principal_opco": "Airtel",
+    "tower_type": "GBM",
+    "project": "PROJ-0117",
+    "site_warehouse": "IN-DM0030 - STPL"
+   },
+   {
+    "name": "IN-DM0027",
+    "nominal_name": "Dahanu_NB_27",
+    "status": "Work Not Started",
+    "overall_progress": 0.0,
+    "zone": "Dahanu",
+    "district": "Palghar",
+    "latitude": 19.930584,
+    "longitude": 72.770026,
+    "allocation_date": "2026-10-10",
+    "principal_opco": "Vodafone Idea",
+    "tower_type": "GBM",
+    "project": "PROJ-0114",
+    "site_warehouse": "IN-DM0027 - STPL"
+   },
+   {
+    "name": "IN-DM0018",
+    "nominal_name": "Bhiwandi_NB2_18",
+    "status": "Work In Progress",
+    "overall_progress": 66.326289452,
+    "zone": "Bhiwandi",
+    "district": "Thane",
+    "latitude": 19.901114,
+    "longitude": 72.947213,
+    "allocation_date": "2026-10-06",
+    "principal_opco": "Vodafone Idea",
+    "tower_type": "GBT",
+    "project": "PROJ-0105",
+    "site_warehouse": "IN-DM0018 - STPL"
+   },
+   {
+    "name": "IN-DM0024",
+    "nominal_name": "Kalyan_NB2_24",
+    "status": "Work In Progress",
+    "overall_progress": 78.708091354,
+    "zone": "Kalyan",
+    "district": "Thane",
+    "latitude": 19.980066,
+    "longitude": 72.857561,
+    "allocation_date": "2026-09-22",
+    "principal_opco": "Vodafone Idea",
+    "tower_type": "GBT",
+    "project": "PROJ-0111",
+    "site_warehouse": "IN-DM0024 - STPL"
+   },
+   {
+    "name": "IN-DM0021",
+    "nominal_name": "Boisar_NB_21",
+    "status": "Work In Progress",
+    "overall_progress": 73.638042407,
+    "zone": "Boisar",
+    "district": "Palghar",
+    "latitude": 19.233884,
+    "longitude": 73.048015,
+    "allocation_date": "2026-09-20",
+    "principal_opco": "Vodafone Idea",
+    "tower_type": "RT Tower",
+    "project": "PROJ-0108",
+    "site_warehouse": "IN-DM0021 - STPL"
+   },
+   {
+    "name": "IN-DM0012",
+    "nominal_name": "Dahanu_NB_12",
+    "status": "Work Completed",
+    "overall_progress": 100.0,
+    "zone": "Dahanu",
+    "district": "Palghar",
+    "latitude": 19.598134,
+    "longitude": 72.933263,
+    "allocation_date": "2026-09-09",
+    "principal_opco": "Airtel",
+    "tower_type": "RT Tower",
+    "project": "PROJ-0099",
+    "site_warehouse": "IN-DM0012 - STPL"
+   },
+   {
+    "name": "IN-DM0015",
+    "nominal_name": "Vasai_RE_15",
+    "status": "Work Completed",
+    "overall_progress": 100.0,
+    "zone": "Vasai",
+    "district": "Palghar",
+    "latitude": 19.687196,
+    "longitude": 72.963132,
+    "allocation_date": "2026-08-27",
+    "principal_opco": "Vodafone Idea",
+    "tower_type": "GBM",
+    "project": "PROJ-0102",
+    "site_warehouse": "IN-DM0015 - STPL"
+   },
+   {
+    "name": "IN-DM0009",
+    "nominal_name": "Kalyan_NB_09",
+    "status": "RFI Pending",
+    "overall_progress": 100.0,
+    "zone": "Kalyan",
+    "district": "Thane",
+    "latitude": 19.710296,
+    "longitude": 73.001117,
+    "allocation_date": "2026-08-21",
+    "principal_opco": "Airtel",
+    "tower_type": "RT Tower",
+    "project": "PROJ-0096",
+    "site_warehouse": "IN-DM0009 - STPL"
+   },
+   {
+    "name": "IN-DM0006",
+    "nominal_name": "Boisar_RE_06",
+    "status": "RFI Pending",
+    "overall_progress": 100.0,
+    "zone": "Boisar",
+    "district": "Palghar",
+    "latitude": 19.834988,
+    "longitude": 73.083933,
+    "allocation_date": "2026-08-11",
+    "principal_opco": "Vodafone Idea",
+    "tower_type": "GBM",
+    "project": "PROJ-0093",
+    "site_warehouse": "IN-DM0006 - STPL"
+   },
+   {
+    "name": "IN-DM0003",
+    "nominal_name": "Bhiwandi_NB2_03",
+    "status": "RFI Done",
+    "overall_progress": 100.0,
+    "zone": "Bhiwandi",
+    "district": "Thane",
+    "latitude": 19.924336,
+    "longitude": 73.043854,
+    "allocation_date": "2026-07-16",
+    "principal_opco": "Vodafone Idea",
+    "tower_type": "GBT",
+    "project": "PROJ-0090",
+    "site_warehouse": "IN-DM0003 - STPL"
+   }
+  ],
+  "expense_types": [
+   "Diesel / Fuel",
+   "Earth Moving Equipment Hire",
+   "Food & Lodging",
+   "Labour Wages",
+   "Local Purchase",
+   "Miscellaneous",
+   "Repair & Maintenance",
+   "Site Security",
+   "Transport & Freight",
+   "Water / Curing"
+  ],
+  "milestones": [
+   {
+    "name": "HOTO",
+    "description": "Allocation to HOTO"
+   },
+   {
+    "name": "Work Start",
+    "description": "HOTO to Work start"
+   },
+   {
+    "name": "C1",
+    "description": "Work start to C1 (Tower Footing, OD BTS Footing)"
+   },
+   {
+    "name": "C2",
+    "description": "C1 to C2 (Tower Foundation, OD BTS Slab, Solar Foundation)"
+   },
+   {
+    "name": "C3",
+    "description": "C2 to C3 (Earthing)"
+   },
+   {
+    "name": "E1",
+    "description": "T1 to E1 (Solar, Ladder & Railing)"
+   },
+   {
+    "name": "Solar I&C",
+    "description": "Solar Installation & Commissioning"
+   },
+   {
+    "name": "Ladder & Railing",
+    "description": "Ladder & Railing (part of E1)"
+   }
+  ],
+  "warehouses": [
+   "Central Store - STPL",
+   "Finished Goods - STPL",
+   "Goods In Transit - STPL",
+   "IN-DM0001 - STPL",
+   "IN-DM0002 - STPL",
+   "IN-DM0003 - STPL",
+   "IN-DM0004 - STPL",
+   "IN-DM0005 - STPL",
+   "IN-DM0006 - STPL",
+   "IN-DM0007 - STPL",
+   "IN-DM0008 - STPL",
+   "IN-DM0009 - STPL",
+   "IN-DM0010 - STPL",
+   "IN-DM0011 - STPL",
+   "IN-DM0012 - STPL",
+   "IN-DM0013 - STPL",
+   "IN-DM0014 - STPL",
+   "IN-DM0015 - STPL",
+   "IN-DM0016 - STPL",
+   "IN-DM0017 - STPL",
+   "IN-DM0018 - STPL",
+   "IN-DM0019 - STPL",
+   "IN-DM0020 - STPL",
+   "IN-DM0021 - STPL",
+   "IN-DM0022 - STPL",
+   "IN-DM0023 - STPL",
+   "IN-DM0024 - STPL",
+   "IN-DM0025 - STPL",
+   "IN-DM0026 - STPL",
+   "IN-DM0027 - STPL",
+   "IN-DM0028 - STPL",
+   "IN-DM0029 - STPL",
+   "IN-DM0030 - STPL",
+   "Rejected Material - STPL",
+   "Stores - STPL",
+   "Work In Progress - STPL"
+  ],
+  "central_store": "Central Store - STPL",
+  "server_version": "0.1.0"
+ },
+ "site_detail": {
+  "site": {
+   "name": "IN-DM0018",
+   "nominal_name": "Bhiwandi_NB2_18",
+   "status": "Work In Progress",
+   "overall_progress": 66.326289452,
+   "zone": "Bhiwandi",
+   "district": "Thane",
+   "latitude": 19.901114,
+   "longitude": 72.947213,
+   "allocation_date": "2026-10-06",
+   "tower_type": "GBT",
+   "tower_height": 30.0,
+   "principal_opco": "Vodafone Idea",
+   "site_address": "Survey no. 315, near Bhiwandi MIDC, Thane",
+   "site_warehouse": "IN-DM0018 - STPL",
+   "zpm_name": "Prabhash Chandra",
+   "de_name": "Ravi Singh",
+   "fse_name": "Anil Ray"
+  },
+  "boq": [
+   {
+    "item_code": "DM-25-EXCAV",
+    "description": "Excavation in all types of soils by mechanized methods",
+    "task_name": "Civil Work",
+    "uom": "Cubic Meter",
+    "po_qty": 72.09,
+    "executed_qty": 38.94,
+    "progress": 54.015813566
+   },
+   {
+    "item_code": "DM-15-TMT",
+    "description": "Reinforcement steel Fe-500 incl. cutting, bending, laying",
+    "task_name": "Civil Work",
+    "uom": "Kg",
+    "po_qty": 1565.25,
+    "executed_qty": 845.25,
+    "progress": 54.000958313
+   },
+   {
+    "item_code": "DM-25-RCC",
+    "description": "Reinforced cement concrete M20 for tower foundation",
+    "task_name": "Civil Work",
+    "uom": "Cubic Meter",
+    "po_qty": 16.54,
+    "executed_qty": 8.94,
+    "progress": 54.050785973
+   },
+   {
+    "item_code": "DM-25-PCC",
+    "description": "Plain cement concrete M10 below foundation",
+    "task_name": "Civil Work",
+    "uom": "Cubic Meter",
+    "po_qty": 2.02,
+    "executed_qty": 1.08,
+    "progress": 53.465346535
+   },
+   {
+    "item_code": "DM-2D-SHUTTER",
+    "description": "Shuttering for Eco / Eco-lite sites, MS sheet / plywood",
+    "task_name": "Civil Work",
+    "uom": "Square Meter",
+    "po_qty": 25.54,
+    "executed_qty": 13.8,
+    "progress": 54.032889585
+   },
+   {
+    "item_code": "DM-25-BACKFILL",
+    "description": "Backfilling in layers with compaction",
+    "task_name": "Civil Work",
+    "uom": "Cubic Meter",
+    "po_qty": 55.13,
+    "executed_qty": 29.76,
+    "progress": 53.981498277
+   },
+   {
+    "item_code": "DM-25-CURING",
+    "description": "Curing services at site",
+    "task_name": "Civil Work",
+    "uom": "Nos",
+    "po_qty": 8.0,
+    "executed_qty": 2.0,
+    "progress": 25.0
+   },
+   {
+    "item_code": "DM-22-EARTH",
+    "description": "Earthing, GI strip 25x3 incl. laying and jointing",
+    "task_name": "Civil Work",
+    "uom": "Meter",
+    "po_qty": 115.64,
+    "executed_qty": 62.46,
+    "progress": 54.012452439
+   },
+   {
+    "item_code": "DM-22-CABLE70",
+    "description": "Supply and laying of cable 70 sq mm 1C copper",
+    "task_name": "Electrical Work",
+    "uom": "Meter",
+    "po_qty": 9.64,
+    "executed_qty": 5.22,
+    "progress": 54.149377593
+   },
+   {
+    "item_code": "DM-27-SOLARCIV",
+    "description": "Civil works for solar power system 5.4 kWp",
+    "task_name": "Other Services &Lots",
+    "uom": "Nos",
+    "po_qty": 1.0,
+    "executed_qty": 1.0,
+    "progress": 100.0
+   },
+   {
+    "item_code": "DM-27-SOLARIC",
+    "description": "Installation, testing and commissioning of solar 5.4 kWp",
+    "task_name": "Other Services &Lots",
+    "uom": "Nos",
+    "po_qty": 1.0,
+    "executed_qty": 1.0,
+    "progress": 100.0
+   },
+   {
+    "item_code": "DM-21-SMPS",
+    "description": "Electrical works with 12 kW SMPS and MPPT",
+    "task_name": "SMPS",
+    "uom": "Nos",
+    "po_qty": 1.0,
+    "executed_qty": 1.0,
+    "progress": 100.0
+   },
+   {
+    "item_code": "DM-2E-SECURITY",
+    "description": "Site security during construction, up to 2 months",
+    "task_name": "Other Services &Lots",
+    "uom": "Nos",
+    "po_qty": 1.0,
+    "executed_qty": 1.0,
+    "progress": 100.0
+   },
+   {
+    "item_code": "DM-29-PMC",
+    "description": "Project management charges",
+    "task_name": "Civil Work",
+    "uom": "Nos",
+    "po_qty": 1.0,
+    "executed_qty": 1.0,
+    "progress": 100.0
+   }
+  ],
+  "milestones": [
+   {
+    "milestone": "HOTO",
+    "planned_date": "2026-10-08",
+    "actual_date": "2026-10-07",
+    "status": "Done",
+    "delay_days": 0
+   },
+   {
+    "milestone": "Work Start",
+    "planned_date": "2026-10-10",
+    "actual_date": "2026-10-12",
+    "status": "Done",
+    "delay_days": 2
+   },
+   {
+    "milestone": "C1",
+    "planned_date": "2026-10-19",
+    "actual_date": "2026-10-17",
+    "status": "Done",
+    "delay_days": 0
+   },
+   {
+    "milestone": "C2",
+    "planned_date": "2026-10-21",
+    "actual_date": "2026-10-21",
+    "status": "Done",
+    "delay_days": 0
+   },
+   {
+    "milestone": "C3",
+    "planned_date": "2026-10-23",
+    "actual_date": null,
+    "status": "Overdue",
+    "delay_days": 11
+   },
+   {
+    "milestone": "E1",
+    "planned_date": "2026-10-25",
+    "actual_date": null,
+    "status": "Overdue",
+    "delay_days": 9
+   },
+   {
+    "milestone": "Solar I&C",
+    "planned_date": "2026-10-26",
+    "actual_date": null,
+    "status": "Overdue",
+    "delay_days": 8
+   },
+   {
+    "milestone": "Ladder & Railing",
+    "planned_date": "2026-10-26",
+    "actual_date": null,
+    "status": "Overdue",
+    "delay_days": 8
+   }
+  ],
+  "open_pos": [
+   {
+    "name": "PUR-ORD-2026-00098",
+    "supplier": "Om Sai Electricals",
+    "supplier_name": "Om Sai Electricals",
+    "transaction_date": "2026-11-01",
+    "per_received": 0.0
+   }
+  ],
+  "recent": [
+   {
+    "name": "SMR-2026-00101",
+    "tower_site": "IN-DM0018",
+    "date": "2026-11-03",
+    "docstatus": 0,
+    "summary": "Indus Free-Issue Material",
+    "modified": "2026-11-03 23:11:03.904527",
+    "kind": "Material Receipt",
+    "status": "Pending approval"
+   },
+   {
+    "name": "DSR-2026-00127",
+    "tower_site": "IN-DM0018",
+    "date": "2026-11-02",
+    "docstatus": 0,
+    "summary": "OD BTS slab casting completed, curing started",
+    "modified": "2026-11-03 23:11:03.838190",
+    "kind": "Daily Report",
+    "status": "Pending approval"
+   },
+   {
+    "name": "DSR-2026-00099",
+    "tower_site": "IN-DM0018",
+    "date": "2026-10-21",
+    "docstatus": 1,
+    "summary": "OD BTS slab casting completed",
+    "modified": "2026-11-03 23:09:56.440314",
+    "kind": "Daily Report",
+    "status": "Approved"
+   },
+   {
+    "name": "SMR-2026-00072",
+    "tower_site": "IN-DM0018",
+    "date": "2026-10-17",
+    "docstatus": 0,
+    "summary": "Indus Free-Issue Material",
+    "modified": "2026-11-03 23:09:56.425129",
+    "kind": "Material Receipt",
+    "status": "Pending approval"
+   },
+   {
+    "name": "SMR-2026-00071",
+    "tower_site": "IN-DM0018",
+    "date": "2026-10-17",
+    "docstatus": 1,
+    "summary": "Indus Free-Issue Material",
+    "modified": "2026-11-03 23:09:56.419019",
+    "kind": "Material Receipt",
+    "status": "Approved"
+   },
+   {
+    "name": "SMR-2026-00070",
+    "tower_site": "IN-DM0018",
+    "date": "2026-10-17",
+    "docstatus": 1,
+    "summary": "Transfer from Store",
+    "modified": "2026-11-03 23:09:56.211818",
+    "kind": "Material Receipt",
+    "status": "Approved"
+   },
+   {
+    "name": "SMR-2026-00069",
+    "tower_site": "IN-DM0018",
+    "date": "2026-10-17",
+    "docstatus": 1,
+    "summary": "Vendor Delivery against PO",
+    "modified": "2026-11-03 23:09:55.965649",
+    "kind": "Material Receipt",
+    "status": "Approved"
+   },
+   {
+    "name": "DSR-2026-00098",
+    "tower_site": "IN-DM0018",
+    "date": "2026-10-17",
+    "docstatus": 1,
+    "summary": "Electrical cabling, SMPS and DCDB installation",
+    "modified": "2026-11-03 23:09:55.085388",
+    "kind": "Daily Report",
+    "status": "Approved"
+   },
+   {
+    "name": "DSR-2026-00097",
+    "tower_site": "IN-DM0018",
+    "date": "2026-10-12",
+    "docstatus": 1,
+    "summary": "Earthing pits and GI strip laying done",
+    "modified": "2026-11-03 23:09:54.572534",
+    "kind": "Daily Report",
+    "status": "Approved"
+   }
+  ]
+ },
+ "my_submissions": [
+  {
+   "name": "SMR-2026-00101",
+   "tower_site": "IN-DM0018",
+   "date": "2026-11-03",
+   "docstatus": 0,
+   "summary": "Indus Free-Issue Material",
+   "modified": "2026-11-03 23:11:03.904527",
+   "kind": "Material Receipt",
+   "status": "Pending approval"
+  },
+  {
+   "name": "DSR-2026-00128",
+   "tower_site": "IN-DM0024",
+   "date": "2026-11-03",
+   "docstatus": 0,
+   "summary": "Earthing pits and GI strip laying done",
+   "modified": "2026-11-03 23:11:03.878693",
+   "kind": "Daily Report",
+   "status": "Pending approval"
+  },
+  {
+   "name": "DSR-2026-00127",
+   "tower_site": "IN-DM0018",
+   "date": "2026-11-02",
+   "docstatus": 0,
+   "summary": "OD BTS slab casting completed, curing started",
+   "modified": "2026-11-03 23:11:03.838190",
+   "kind": "Daily Report",
+   "status": "Pending approval"
+  }
+ ],
+ "search_items": [
+  {
+   "item_code": "MAT-AGGREGATE-20MM",
+   "item_name": "Aggregate 20 mm",
+   "uom": "Cubic Meter"
+  },
+  {
+   "item_code": "MAT-CEMENT-OPC53",
+   "item_name": "Cement OPC 53 Grade (50 kg bag)",
+   "uom": "Bag"
+  },
+  {
+   "item_code": "MAT-CU-CABLE-70",
+   "item_name": "Copper Cable 70 sq mm 1C",
+   "uom": "Meter"
+  },
+  {
+   "item_code": "MAT-GI-STRIP-25X3",
+   "item_name": "GI Strip 25x3 mm",
+   "uom": "Meter"
+  },
+  {
+   "item_code": "MAT-HDPE-PIPE-2IN",
+   "item_name": "HDPE Pipe 2 inch",
+   "uom": "Meter"
+  },
+  {
+   "item_code": "MAT-TMT-FE500",
+   "item_name": "TMT Steel Bar Fe-500",
+   "uom": "Kg"
+  }
+ ],
+ "get_po_pending_items": [
+  {
+   "name": "7mjv2ltd0a",
+   "item_code": "MAT-CU-CABLE-70",
+   "item_name": "Copper Cable 70 sq mm 1C",
+   "uom": "Meter",
+   "qty": 40.0,
+   "received_qty": 0.0,
+   "pending_qty": 40.0
+  },
+  {
+   "name": "7mjg6q5hli",
+   "item_code": "MAT-HDPE-PIPE-2IN",
+   "item_name": "HDPE Pipe 2 inch",
+   "uom": "Meter",
+   "qty": 60.0,
+   "received_qty": 0.0,
+   "pending_qty": 60.0
+  },
+  {
+   "name": "7mjtfj467q",
+   "item_code": "MAT-GI-STRIP-25X3",
+   "item_name": "GI Strip 25x3 mm",
+   "uom": "Meter",
+   "qty": 120.0,
+   "received_qty": 0.0,
+   "pending_qty": 120.0
+  }
+ ],
+ "ping": {
+  "app": "tower_site_execution",
+  "version": "0.1.0",
+  "site": "erp.yourcompany.com"
+ }
+}

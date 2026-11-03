@@ -208,7 +208,7 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
               child: _openPos.isEmpty
                   ? const Text('No open Purchase Orders for this site. Ask the purchase team to tag the PO with this site / project.')
                   : DropdownButtonFormField<String>(
-                      value: _po,
+                      initialValue: _po,
                       isExpanded: true,
                       decoration: const InputDecoration(labelText: 'Purchase Order', prefixIcon: Icon(Icons.receipt_long)),
                       items: [
@@ -228,7 +228,7 @@ class _ReceiptScreenState extends State<ReceiptScreen> {
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
               child: DropdownButtonFormField<String>(
-                value: s.warehouses.contains(_fromWarehouse) ? _fromWarehouse : null,
+                initialValue: s.warehouses.contains(_fromWarehouse) ? _fromWarehouse : null,
                 isExpanded: true,
                 decoration: const InputDecoration(labelText: 'Sent from warehouse', prefixIcon: Icon(Icons.warehouse_outlined)),
                 items: [for (final w in s.warehouses) DropdownMenuItem(value: w, child: Text(w, overflow: TextOverflow.ellipsis))],

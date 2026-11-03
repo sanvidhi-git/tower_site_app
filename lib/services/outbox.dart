@@ -172,6 +172,13 @@ class Outbox extends ChangeNotifier {
 
   Future<void> discard(OutboxItem item) => _remove(item);
 
+  /// Test hook: shows an item as waiting without touching disk or network.
+  @visibleForTesting
+  void debugAdd(OutboxItem item) {
+    _items.add(item);
+    notifyListeners();
+  }
+
   Future<void> clear() async {
     for (final i in List.of(_items)) {
       await _remove(i);

@@ -31,10 +31,14 @@ class JsonStore {
   }
 
   static Future<void> write(String key, dynamic value) async {
-    final f = await _file(key);
-    final tmp = File('${f.path}.tmp');
-    await tmp.writeAsString(jsonEncode(value), flush: true);
-    await tmp.rename(f.path);
+    try {
+      final f = await _file(key);
+      final tmp = File('${f.path}.tmp');
+      await tmp.writeAsString(jsonEncode(value), flush: true);
+      await tmp.rename(f.path);
+    } catch (_) {
+      // cache only: a failed write must never break the screen that fetched the data
+    }
   }
 
   static Future<void> delete(String key) async {

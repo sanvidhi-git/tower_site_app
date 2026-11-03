@@ -35,6 +35,16 @@ class Session extends ChangeNotifier {
   List<String> get warehouses => List<String>.from(_boot['warehouses'] ?? const []);
   String? get centralStore => _boot['central_store'] as String?;
 
+  /// Test hook: puts the session straight into a signed-in state with fixture data.
+  @visibleForTesting
+  void debugSignIn({required String user, required String server, required Map<String, dynamic> boot}) {
+    this.user = user;
+    serverUrl = server;
+    _boot = boot;
+    ready = true;
+    notifyListeners();
+  }
+
   static List<Map<String, dynamic>> _maps(dynamic v) =>
       (v as List? ?? []).map((e) => Map<String, dynamic>.from(e as Map)).toList();
 

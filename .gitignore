@@ -8,3 +8,4 @@ build/
 android/local.properties
 android/key.properties
 *.jks
+screenshots/

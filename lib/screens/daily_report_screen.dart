@@ -170,7 +170,7 @@ class _DailyReportScreenState extends State<DailyReportScreen> {
               const SizedBox(width: 12),
               Expanded(
                 child: DropdownButtonFormField<String?>(
-                  value: _milestone,
+                  initialValue: _milestone,
                   isExpanded: true,
                   decoration: const InputDecoration(labelText: 'Milestone achieved'),
                   items: [
@@ -214,7 +214,7 @@ class _DailyReportScreenState extends State<DailyReportScreen> {
                 SizedBox(
                   width: 210,
                   child: DropdownButtonFormField<String?>(
-                    value: m.warehouse,
+                    initialValue: m.warehouse,
                     isExpanded: true,
                     decoration: const InputDecoration(labelText: 'Taken from', isDense: true),
                     items: [
@@ -237,7 +237,7 @@ class _DailyReportScreenState extends State<DailyReportScreen> {
                 SizedBox(
                   width: 210,
                   child: DropdownButtonFormField<String>(
-                    value: e.type,
+                    initialValue: e.type,
                     isExpanded: true,
                     decoration: const InputDecoration(labelText: 'Type', isDense: true),
                     items: [for (final t in s.expenseTypes) DropdownMenuItem(value: t, child: Text(t))],

@@ -4,7 +4,11 @@ import 'package:geolocator/geolocator.dart';
 class LocationService {
   LocationService._();
 
+  /// Test hook: a fixed position instead of the GPS.
+  static Position? debugPosition;
+
   static Future<Position?> current() async {
+    if (debugPosition != null) return debugPosition;
     try {
       if (!await Geolocator.isLocationServiceEnabled()) return await Geolocator.getLastKnownPosition();
       var perm = await Geolocator.checkPermission();
