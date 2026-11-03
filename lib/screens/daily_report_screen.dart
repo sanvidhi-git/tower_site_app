@@ -159,11 +159,11 @@ class _DailyReportScreenState extends State<DailyReportScreen> {
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
             child: Row(children: [
               SizedBox(
-                width: 130,
+                width: 150,
                 child: TextFormField(
                   controller: _labour,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(labelText: 'Labour count', prefixIcon: Icon(Icons.groups)),
+                  decoration: const InputDecoration(labelText: 'Labour', prefixIcon: Icon(Icons.groups)),
                   validator: (v) => (int.tryParse(v?.trim() ?? '') == null) ? 'Required' : null,
                 ),
               ),

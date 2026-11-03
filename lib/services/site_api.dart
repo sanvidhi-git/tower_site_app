@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '../core/api.dart';
 import '../core/store.dart';
 
@@ -45,7 +47,7 @@ class SiteApi {
   static Future<dynamic> _cachedAny(String key, Future<dynamic> Function() fetch) async {
     try {
       final r = await fetch();
-      await JsonStore.write('cache_$key', r);
+      unawaited(JsonStore.write('cache_$key', r)); // save for offline use without delaying the screen
       return r;
     } on ApiException catch (e) {
       if (!e.isNetworkError) rethrow;
