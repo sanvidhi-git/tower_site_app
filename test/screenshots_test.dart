@@ -91,7 +91,9 @@ Future<void> settle(WidgetTester t) async {
   }
   await t.runAsync(() async {
     for (final e in find.byType(Image).evaluate()) {
-      await precacheImage((e.widget as Image).image, e);
+      // real-time timeout: a stalled image load must never hang the whole run
+      await precacheImage((e.widget as Image).image, e)
+          .timeout(const Duration(seconds: 5), onTimeout: () {});
     }
   });
   for (var i = 0; i < 4; i++) {
